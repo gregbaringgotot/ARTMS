@@ -1,99 +1,111 @@
 import { Link } from "react-router-dom";
 import { FiLinkedin, FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import artmsLogoWhite from "../assets/Logo/LOGO_ARTMS_WHITE.png";
+
+const EXPLORE_LINKS = [
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
+  { label: "Job Postings", to: "/jobs" },
+  { label: "Contact", to: "/contact" },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--artms-border)] bg-white">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-12 lg:grid-cols-4 lg:px-10">
+    <footer className="bg-[#060F5A] text-white/80">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr] lg:px-10">
+        {/* Brand */}
         <div>
-          <div className="flex items-center gap-2">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-[var(--artms-primary-2)] text-sm font-black text-white">
-              A
-            </span>
+          <Link to="/" className="flex items-center gap-3">
+            <img src={artmsLogoWhite} alt="Accel4U logo" className="h-10 w-auto" />
             <div className="leading-tight">
-              <p className="text-sm font-extrabold text-slate-900">ARTMS</p>
-              <p className="text-xs text-slate-500">AI Recruitment & Talent</p>
+              <p className="font-sans text-xl font-extrabold tracking-tight text-white">
+                Accel4U
+              </p>
+              <p className="font-sans text-[11px] font-normal tracking-wide text-white/70">
+                AI Recruitment and Talent Management System
+              </p>
             </div>
-          </div>
-          <p className="mt-4 text-sm leading-relaxed text-slate-600">
-            Enterprise-grade recruitment experiences inspired by modern HR
-            platforms. Frontend-only UI ready for future Laravel + MySQL
-            integration.
+          </Link>
+          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70">
+            ARTMS is Accel4U Business Solutions Inc.'s centralized, AI-assisted
+            platform for recruitment and employee record management — built to
+            streamline applicant screening, improve data accuracy, and support
+            faster, better-informed HR decisions.
           </p>
         </div>
 
+        {/* Explore */}
         <div>
-          <p className="text-sm font-extrabold text-slate-900">Explore</p>
-          <ul className="mt-3 space-y-2 text-sm text-slate-600">
+          <p className="text-sm font-bold uppercase tracking-wide text-white">
+            Explore
+          </p>
+          <ul className="mt-4 space-y-3 text-sm text-white/70">
+            {EXPLORE_LINKS.map((link) => (
+              <li key={link.to}>
+                <Link
+                  className="transition-colors duration-200 hover:text-[var(--artms-accent)]"
+                  to={link.to}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* For Teams */}
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wide text-white">
+            For Teams
+          </p>
+          <ul className="mt-4 space-y-3 text-sm text-white/70">
             <li>
-              <Link className="hover:text-slate-900" to="/">
-                Home
+              <Link
+                className="transition-colors duration-200 hover:text-[var(--artms-accent)]"
+                to="/login"
+              >
+                Admin Login
               </Link>
             </li>
-            <li>
-              <Link className="hover:text-slate-900" to="/about">
-                About
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-slate-900" to="/jobs">
-                Jobs
-              </Link>
-            </li>
-            <li>
-              <Link className="hover:text-slate-900" to="/contact">
-                Contact
-              </Link>
+            <li className="max-w-[200px] text-xs leading-relaxed text-white/50">
+              Reserved for Department Heads, HR Admins, and Super Admins.
             </li>
           </ul>
         </div>
 
+        {/* Contact */}
         <div>
-          <p className="text-sm font-extrabold text-slate-900">For Teams</p>
-          <ul className="mt-3 space-y-2 text-sm text-slate-600">
-            <li>
-              <Link className="hover:text-slate-900" to="/login">
-                HR Login
-              </Link>
+          <p className="text-sm font-bold uppercase tracking-wide text-white">
+            Contact
+          </p>
+          <ul className="mt-4 space-y-3 text-sm text-white/70">
+            <li className="flex items-center gap-3">
+              <FiMapPin className="shrink-0 text-[var(--artms-accent)]" aria-hidden="true" />
+              <span>Philippines &middot; Accel4U Business Solutions Inc.</span>
             </li>
-            <li className="text-xs text-slate-500">
-              Department Heads, HR Admins, and Super Admins only.
+            <li className="flex items-center gap-3">
+              <FiMail className="shrink-0 text-[var(--artms-accent)]" aria-hidden="true" />
+              <span>hr@accel4u.example</span>
             </li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="text-sm font-extrabold text-slate-900">Contact</p>
-          <ul className="mt-3 space-y-2 text-sm text-slate-600">
-            <li className="flex items-center gap-2">
-              <FiMapPin aria-hidden="true" />
-              <span>PH • Enterprise Hiring Operations</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FiMail aria-hidden="true" />
-              <span>talent@artms.example</span>
-            </li>
-            <li className="flex items-center gap-2">
-              <FiPhone aria-hidden="true" />
+            <li className="flex items-center gap-3">
+              <FiPhone className="shrink-0 text-[var(--artms-accent)]" aria-hidden="true" />
               <span>+63 000 000 0000</span>
             </li>
-            <li className="flex items-center gap-2">
-              <FiLinkedin aria-hidden="true" />
-              <span>LinkedIn Careers</span>
+            <li className="flex items-center gap-3">
+              <FiLinkedin className="shrink-0 text-[var(--artms-accent)]" aria-hidden="true" />
+              <span>Accel4U Careers</span>
             </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-[var(--artms-border)] bg-[var(--artms-soft)]">
-        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-4 text-xs text-slate-600 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-          <p>© {new Date().getFullYear()} ARTMS. All rights reserved.</p>
-          <p className="text-slate-500">
-            Built with React + Vite + Tailwind v4 (frontend only).
-          </p>
+      {/* Bottom bar */}
+      <div className="border-t border-white/10 bg-[#040a3e]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-5 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+          <p>&copy; {new Date().getFullYear()} Accel4U Business Solutions Inc. All rights reserved.</p>
+          <p>ARTMS &mdash; AI Recruitment and Talent Management System</p>
         </div>
       </div>
     </footer>
   );
 }
-
